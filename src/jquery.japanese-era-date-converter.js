@@ -1,5 +1,7 @@
-const japanese_era_date_converter = function () {
-  this.on("click", function () {
+import $ from "jquery";
+
+const japanese_era_date_converter = function() {
+  this.on("click", function() {
     alert("aaa");
   });
 };
