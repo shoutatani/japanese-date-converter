@@ -1,0 +1,16 @@
+@charset "utf-8";
+
+h1 {
+  margin: 30px 0;
+}
+
+div.sample {
+  margin-bottom: 35px;
+}
+
+.supported-styles {
+  border: 1px solid black;
+}
+.supported-styles th, .supported-styles td {
+  border-bottom: 1px solid black;
+}
