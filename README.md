@@ -1,5 +1,5 @@
 # jquery.japanese-era-date-converter
-A simple jQuery Plugin to Japanese date converter.
+A simple jQuery plugin to convert Japanese date and Western years.
 
 [Demo Page](https://shoutatani.github.io/jquery.japanese-era-date-converter/)
 
