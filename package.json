@@ -6,6 +6,10 @@
   "author": "shoutatani",
   "license": "MIT",
   "private": false,
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/shoutatani/jquery.japanese-era-date-converter"
+  },
   "keywords": [
     "jquery-plugin",
     "japanese",
