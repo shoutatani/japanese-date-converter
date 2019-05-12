@@ -1,6 +1,8 @@
 # jquery.japanese-era-date-converter
 A simple jQuery Plugin to Japanese date converter.
 
+[Demo Page](https://shoutatani.github.io/jquery.japanese-era-date-converter/)
+
 ## Installation
 Download script in dist folder, and include the script after the jQuery library (unless you are packaging scripts somehow else):
 
