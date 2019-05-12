@@ -66,7 +66,7 @@ Download script in dist folder, and include the script after the jQuery library 
         <td>02</td>
       </tr>
       <tr>
-        <td>ee</td>
+        <td>e</td>
         <td>1990/04/30</td>
         <td>2</td>
       </tr>
