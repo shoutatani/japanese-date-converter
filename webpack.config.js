@@ -1,10 +1,13 @@
 webpack = require('webpack');
 module.exports = {
   mode: "production",
-  entry: "./src/jquery.japanese-era-date-converter",
+  entry: {
+    "jquery.japanese-era-date-converter" : "./src/jquery.japanese-era-date-converter",
+    "japanese-era-date-converter" : "./src/japanese-era-date-converter",
+  },
   output: {
     path: `${__dirname}/dist`,
-    filename: "jquery.japanese-era-date-converter.js"
+    filename: "[name].js"
   },
   module: {
     rules: [
