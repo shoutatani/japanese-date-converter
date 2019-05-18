@@ -1,4 +1,4 @@
-export default class JapaneseEraDateFormatter {
+export default class JapaneseEraDateConverter {
 
   constructor({ inputValue, settings }) {
     this.inputValue = inputValue;

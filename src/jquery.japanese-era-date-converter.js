@@ -1,5 +1,5 @@
 import jQuery from "jquery";
-import JapaneseEraDateFormatter from "./japanese-era-date-formatter";
+import JapaneseEraDateConverter from "./japanese-era-date-converter";
 
 (function ($) {
 
@@ -18,8 +18,8 @@ import JapaneseEraDateFormatter from "./japanese-era-date-formatter";
     this.on({
       "change": function (e) {
         const inputValue = $(this).val() || "";
-        const formatter = new JapaneseEraDateFormatter({ inputValue, settings });
-        $(this).val(formatter.execute());
+        const converter = new JapaneseEraDateConverter({ inputValue, settings });
+        $(this).val(converter.execute());
       }
     });
     return this;
