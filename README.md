@@ -2,7 +2,7 @@
 
 This module help you to convert Japanese date and Western years.
 
-[Demo Page](https://shoutatani.github.io/jquery.japanese-era-date-converter/)
+[Demo Page](https://shoutatani.github.io/japanese-era-date-converter/)
 
 ## Installation
 
@@ -48,7 +48,7 @@ And, call like this.
 1. When text inputted, the text will be converted as format.
   * example
     + When format is "gee/mm/dd", "2019/04/30" will be "H31/04/30".
-  * If you'd like to know more, please check [Demo Page](https://shoutatani.github.io/jquery.japanese-era-date-converter/).
+  * If you'd like to know more, please check [Demo Page](https://shoutatani.github.io/japanese-era-date-converter/).
 
 2. Supported format is as below.
   <table class="supported-styles">
