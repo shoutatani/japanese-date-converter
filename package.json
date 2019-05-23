@@ -2,7 +2,7 @@
   "name": "japanese-era-date-converter",
   "version": "0.0.1",
   "description": "Convert western or japanese years into opposite years.",
-  "main": "japanese-era-date-converter",
+  "main": "dist/japanese-era-date-converter.js",
   "author": "shoutatani",
   "license": "MIT",
   "private": false,
