@@ -13,7 +13,7 @@ All you need is to call this module, like this.
 ```
 // file top
 
-import JapaneseEraDateConverter from "./japanese-era-date-converter";
+import JapaneseEraDateConverter from "japanese-era-date-converter";
 
 // in class or function
 
