@@ -280,3 +280,5 @@ export default class JapaneseEraDateConverter {
     return result;
   }
 }
+
+module.exports = JapaneseEraDateConverter;
