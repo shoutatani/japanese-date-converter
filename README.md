@@ -38,7 +38,7 @@ And, call like this.
 ```
 <script>
   $(document).ready(function () {
-    $("#target").japanese_era_date_converter({ format: "yyyy/mm/dd" });
+    $("#target").japanese_date_converter({ format: "yyyy/mm/dd" });
   });
 </script>
 ```
