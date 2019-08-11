@@ -1,24 +1,20 @@
 {
-  "name": "japanese-era-date-converter",
+  "name": "japanese-date-converter",
   "version": "0.0.8",
   "description": "Convert western or japanese years into opposite years.",
-  "module": "dist/japanese-era-date-converter.js",
+  "module": "dist/japanese-date-converter.js",
   "author": "shoutatani",
   "license": "MIT",
   "private": false,
   "repository": {
     "type": "git",
-    "url": "https://github.com/shoutatani/japanese-era-date-converter"
+    "url": "https://github.com/shoutatani/japanese-date-converter"
   },
   "keywords": [
     "jquery-plugin",
     "japanese",
     "date",
-    "formatter",
-    "converter",
-    "japanese era",
-    "era",
-    "japanese"
+    "era"
   ],
   "scripts": {
     "build": "webpack"

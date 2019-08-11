@@ -1,9 +1,9 @@
 import jQuery from "jquery";
-import JapaneseEraDateConverter from "./japanese-era-date-converter";
+import JapaneseDateConverter from "./japanese-date-converter";
 
 (function ($) {
 
-  const japanese_era_date_converter = function (options) {
+  const japanese_date_converter = function (options) {
 
     const defaultSettings = {
       format: "geemmdd"
@@ -18,13 +18,13 @@ import JapaneseEraDateConverter from "./japanese-era-date-converter";
     this.on({
       "change": function (e) {
         const inputValue = $(this).val() || "";
-        const converter = new JapaneseEraDateConverter({ inputValue, settings });
+        const converter = new JapaneseDateConverter({ inputValue, settings });
         $(this).val(converter.execute());
       }
     });
     return this;
   };
 
-  $.fn.japanese_era_date_converter = japanese_era_date_converter;
+  $.fn.japanese_date_converter = japanese_date_converter;
 
 })(jQuery);
