@@ -3,15 +3,15 @@
 
 <head>
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>japanese-era-date-converter sample</title>
+  <title>japanese-date-converter sample</title>
   <meta charset="utf-8">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="./jquery.japanese-era-date-converter.js"></script>
+  <script src="./dist/jquery.japanese-date-converter.js"></script>
   <link type="text/css" rel="stylesheet" href="./styles.css" />
 </head>
 
 <body>
-  <h1>japanese-era-date-converter Demo (use as jQuery)</h1>
+  <h1>japanese-date-converter Demo (use as jQuery)</h1>
   <div class="sample">
     <p>Input "H30/12/31", and then it will be converted into "2018/12/31".</p>
     <p>This shows that MTSHR styles(明治・大正・昭和・平成・令和) can be converted into Western years style.</p>
@@ -134,11 +134,11 @@
   </div>
   <script>
     $(document).ready(function () {
-      $("#1").japanese_era_date_converter({ format: "yyyy/mm/dd" });
-      $("#2").japanese_era_date_converter({ format: "yyyy/mm/dd" });
-      $("#3").japanese_era_date_converter({ format: "yyyy/mm/dd" });
-      $("#4").japanese_era_date_converter({ format: "yyyy/mm/dd" });
-      $("#5").japanese_era_date_converter({ format: "ge/mm/dd" });
+      $("#1").japanese_date_converter({ format: "yyyy/mm/dd" });
+      $("#2").japanese_date_converter({ format: "yyyy/mm/dd" });
+      $("#3").japanese_date_converter({ format: "yyyy/mm/dd" });
+      $("#4").japanese_date_converter({ format: "yyyy/mm/dd" });
+      $("#5").japanese_date_converter({ format: "ge/mm/dd" });
     });
   </script>
 </body>
