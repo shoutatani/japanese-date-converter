@@ -1,6 +1,33 @@
-export default class JapaneseDateConverter {
+interface JapaneseDateConverterInterface {
+  inputValue: string,
+  settings: {
+    format: string
+  }
+}
 
-  constructor({ inputValue, settings }) {
+interface Gengo {
+  name: string,
+  ligature: string,
+  from: Date,
+  to: Date,
+  ggg: string,
+  gg: string,
+}
+
+export default class JapaneseDateConverter {
+  inputValue: string;
+  settings: {
+    format: string
+  };
+  gengo: Gengo
+  gengoList: Gengo[]
+  formatOptions: {
+    years: string[],
+    months: string[],
+    days: string[]
+  }
+
+  constructor({ inputValue, settings }: JapaneseDateConverterInterface) {
     this.inputValue = inputValue;
     this.settings = settings;
 
@@ -46,110 +73,7 @@ export default class JapaneseDateConverter {
         gg: "令"
       }
     ]
-  }
-
-  execute() {
-    if (!this.checkValue()) {
-      return this.inputValue;
-    }
-    return this.convert();
-  }
-
-  checkValue() {
-    const MINIMUM_LENGTH = 7;
-    if (this.inputValue.length < MINIMUM_LENGTH) {
-      return false;
-    }
-    return true;
-  }
-
-  getGengoFromWarekiLetter(firstLetter) {
-    let result = null;
-    this.gengoList.forEach((gengo, index) => {
-      if (gengo.name === firstLetter || (index + 1) === Number.parseInt(firstLetter)) {
-        result = gengo;
-      }
-    }, this.gengoList);
-    return result;
-  }
-
-  hasWarekiLetter() {
-    return (
-      this.inputValue.match(/^\d{7}$/) ||
-      this.inputValue.match(/^[A-Z1-9]{1}\d{6}$/)) ||
-      this.inputValue.match(/^[A-Z1-9]{1}\d{2}.+\d{2}.+\d{2}/
-    );
-  }
-
-  getGengoFromDate(date) {
-    let gengo = this.gengoList.find(gengo => date >= gengo.from && date <= gengo.to);
-    if (date < this.gengoList[0].from) {
-      gengo = this.gengoList[0];
-    }
-    if (date > this.gengoList[this.gengoList.length - 1].from) {
-      gengo = this.gengoList[this.gengoList.length - 1];
-    }
-    return gengo;
-  }
-
-  getSeirekiYear(gengo, warekiYear) {
-    if (!gengo) {
-      return null;
-    }
-    return gengo.from.getFullYear() + Number.parseInt(warekiYear) - 1;
-  }
-
-  getWarekiYear(date) {
-    const gengo = this.getGengoFromDate(date);
-    return date.getFullYear() - (gengo.from.getFullYear() - 1)
-  }
-
-  getDate(gengo) {
-    let result = null;
-    switch (this.inputValue.length) {
-      case 7: {
-        // 4300121
-        // H300121
-        const warekiYear = this.inputValue.substr(1, 2);
-        const month = this.inputValue.substr(3, 2);
-        const day = this.inputValue.substr(5, 2);
-        const seirekiYear = this.getSeirekiYear(gengo, warekiYear);
-        return new Date(seirekiYear, month - 1, day);
-      }
-      case 8: {
-        // 20180121
-        const seirekiYear = Number.parseInt(this.inputValue.substr(0, 4));
-        const month = Number.parseInt(this.inputValue.substr(4, 2));
-        const day = Number.parseInt(this.inputValue.substr(6, 4));
-        return new Date(seirekiYear, month - 1, day);
-      }
-      case 9: {
-        // H30/01/01
-        // H30.01.21
-        // 430/01/01
-        // 430.01.01
-        const warekiYear = Number.parseInt(this.inputValue.substr(1, 2));
-        const month = this.inputValue.match(/\d{2}.+(\d{2}).+\d{2}/) ? this.inputValue.match(/\d{2}.+(\d{2}).+\d{2}/)[1] : null;
-        const day = this.inputValue.match(/\d{2}.+\d{2}.+(\d{2})/) ? this.inputValue.match(/\d{2}.+\d{2}.+(\d{2})/)[1] : null;
-        const seirekiYear = this.getSeirekiYear(gengo, warekiYear);
-        return new Date(seirekiYear, month - 1, day);
-      }
-      case 10: {
-        // 2018/01/01
-        // 2018.01.01
-        const seirekiYear = Number.parseInt(this.inputValue.substr(0, 4));
-        const month = this.inputValue.match(/\d{4}.+(\d{2}).+\d{2}/) ? this.inputValue.match(/\d{4}.+(\d{2}).+\d{2}/)[1] : null;
-        const day = this.inputValue.match(/\d{4}.+\d{2}.+(\d{2})/) ? this.inputValue.match(/\d{4}.+\d{2}.+(\d{2})/)[1] : null;
-        return new Date(seirekiYear, month - 1, day);
-      }
-      default:
-        break;
-    }
-    return result;
-  }
-
-  formatOptions() {
-    return {
+    this.formatOptions = {
       years: [
         "ggg", "gg", "g", "ee", "e", "yyyy", "yy"
       ],
@@ -162,9 +86,109 @@ export default class JapaneseDateConverter {
     }
   }
 
-  searchFormatTarget(format) {
-    const formatOptions = this.formatOptions();
-    let formatTarget = null;
+  execute() {
+    if (!this.checkValue()) {
+      return this.inputValue;
+    }
+    return this.convert();
+  }
+
+  checkValue() {
+    const MINIMUM_LENGTH: number = 7;
+    if (this.inputValue.length < MINIMUM_LENGTH) {
+      return false;
+    }
+    return true;
+  }
+
+  getGengoFromWarekiLetter(firstLetter: string): Gengo {
+    let result: Gengo = null;
+    this.gengoList.forEach((gengo, index) => {
+      if (gengo.name === firstLetter || (index + 1) === Number.parseInt(firstLetter)) {
+        result = gengo;
+      }
+    }, this.gengoList);
+    return result;
+  }
+
+  hasWarekiLetter(): RegExpMatchArray {
+    return (
+      this.inputValue.match(/^\d{7}$/) ||
+      this.inputValue.match(/^[A-Z1-9]{1}\d{6}$/)) ||
+      this.inputValue.match(/^[A-Z1-9]{1}\d{2}.+\d{2}.+\d{2}/
+    );
+  }
+
+  getGengoFromDate(date: Date): Gengo {
+    let gengo: Gengo = this.gengoList.find(gengo => date >= gengo.from && date <= gengo.to);
+    if (date < this.gengoList[0].from) {
+      gengo = this.gengoList[0];
+    }
+    if (date > this.gengoList[this.gengoList.length - 1].from) {
+      gengo = this.gengoList[this.gengoList.length - 1];
+    }
+    return gengo;
+  }
+
+  getSeirekiYear(gengo: Gengo, warekiYear: number): number {
+    if (!gengo) {
+      return null;
+    }
+    return gengo.from.getFullYear() + warekiYear - 1;
+  }
+
+  getWarekiYear(date: Date): number {
+    const gengo: Gengo = this.getGengoFromDate(date);
+    return date.getFullYear() - (gengo.from.getFullYear() - 1)
+  }
+
+  getDate(gengo?: Gengo): Date {
+    let result = null;
+    switch (this.inputValue.length) {
+      case 7: {
+        // 4300121
+        // H300121
+        const warekiYear: number = Number.parseInt(this.inputValue.substr(1, 2));
+        const month: number = Number.parseInt(this.inputValue.substr(3, 2));
+        const day: number = Number.parseInt(this.inputValue.substr(5, 2));
+        const seirekiYear: number = this.getSeirekiYear(gengo, warekiYear);
+        return new Date(seirekiYear, month - 1, day);
+      }
+      case 8: {
+        // 20180121
+        const seirekiYear: number = Number.parseInt(this.inputValue.substr(0, 4));
+        const month: number = Number.parseInt(this.inputValue.substr(4, 2));
+        const day: number = Number.parseInt(this.inputValue.substr(6, 4));
+        return new Date(seirekiYear, month - 1, day);
+      }
+      case 9: {
+        // H30/01/01
+        // H30.01.21
+        // 430/01/01
+        // 430.01.01
+        const warekiYear: number = Number.parseInt(this.inputValue.substr(1, 2));
+        const month: number = Number.parseInt(this.inputValue.match(/\d{2}.+(\d{2}).+\d{2}/) ? this.inputValue.match(/\d{2}.+(\d{2}).+\d{2}/)[1] : null);
+        const day: number = Number.parseInt(this.inputValue.match(/\d{2}.+\d{2}.+(\d{2})/) ? this.inputValue.match(/\d{2}.+\d{2}.+(\d{2})/)[1] : null);
+        const seirekiYear: number = this.getSeirekiYear(gengo, warekiYear);
+        return new Date(seirekiYear, month - 1, day);
+      }
+      case 10: {
+        // 2018/01/01
+        // 2018.01.01
+        const seirekiYear: number = Number.parseInt(this.inputValue.substr(0, 4));
+        const month: number = Number.parseInt(this.inputValue.match(/\d{4}.+(\d{2}).+\d{2}/) ? this.inputValue.match(/\d{4}.+(\d{2}).+\d{2}/)[1] : null);
+        const day: number = Number.parseInt(this.inputValue.match(/\d{4}.+\d{2}.+(\d{2})/) ? this.inputValue.match(/\d{4}.+\d{2}.+(\d{2})/)[1] : null);
+        return new Date(seirekiYear, month - 1, day);
+      }
+      default:
+        break;
+    }
+    return result;
+  }
+
+  searchFormatTarget(format: string): string {
+    const formatOptions = this.formatOptions;
+    let formatTarget: string = null;
 
     formatTarget = formatOptions.years.find(yearFormat => format.includes(yearFormat));
     if (formatTarget) {
@@ -181,8 +205,8 @@ export default class JapaneseDateConverter {
     return formatTarget;
   }
 
-  convertFormatTargetToValue(date, gengo, formatTarget) {
-    const monthNames = [
+  convertFormatTargetToValue(date: Date, gengo: Gengo, formatTarget: string): string {
+    const monthNames: string[] = [
       "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"
     ];
     switch (formatTarget) {
@@ -197,7 +221,7 @@ export default class JapaneseDateConverter {
       case "e":
         return this.getWarekiYear(date).toString();
       case "yyyy":
-        return date.getFullYear();
+        return date.getFullYear().toString();
       case "yy":
         return date.getFullYear().toString().substr(2, 2);
       case "mmmmm":
@@ -219,9 +243,9 @@ export default class JapaneseDateConverter {
     }
   }
 
-  convertDateByFormat(date, gengo, format) {
-    let replacedString = format;
-    let formatTarget = this.searchFormatTarget(replacedString);
+  convertDateByFormat(date: Date, gengo: Gengo, format: string): string {
+    let replacedString: string = format;
+    let formatTarget: string = this.searchFormatTarget(replacedString);
     while (formatTarget) {
       replacedString = replacedString.replace(formatTarget, this.convertFormatTargetToValue(date, gengo, formatTarget));
       formatTarget = this.searchFormatTarget(replacedString);
@@ -229,8 +253,8 @@ export default class JapaneseDateConverter {
     return replacedString;
   }
 
-  convert() {
-    let result = null;
+  convert(): string {
+    let result: string = null;
     switch (this.inputValue.length) {
       // ex. 平成30年1月21日
       case 7: {
@@ -239,9 +263,9 @@ export default class JapaneseDateConverter {
         if (!this.hasWarekiLetter()) {
           return this.inputValue;
         }
-        const gengo = this.getGengoFromWarekiLetter(this.inputValue.substr(0, 1))
-        const date = this.getDate(gengo);
-        const format = this.settings.format;
+        const gengo: Gengo = this.getGengoFromWarekiLetter(this.inputValue.substr(0, 1))
+        const date: Date = this.getDate(gengo);
+        const format: string = this.settings.format;
         return this.convertDateByFormat(date, gengo, format);
       }
       case 8:
@@ -249,9 +273,9 @@ export default class JapaneseDateConverter {
         if (this.inputValue.match(/\D/)) {
           return this.inputValue;
         }
-        const date = this.getDate();
-        const format = this.settings.format;
-        return this.convertDateByFormat(date, gengo, format)
+        const date: Date = this.getDate();
+        const format: string = this.settings.format;
+        return this.convertDateByFormat(date, null, format)
       case 9: {
         // H30/01/01
         // H30.01.21
@@ -260,17 +284,17 @@ export default class JapaneseDateConverter {
         if (!this.hasWarekiLetter()) {
           return this.inputValue;
         }
-        const gengo = this.getGengoFromWarekiLetter(this.inputValue.substr(0, 1))
-        const date = this.getDate(gengo);
-        const format = this.settings.format;
+        const gengo: Gengo = this.getGengoFromWarekiLetter(this.inputValue.substr(0, 1))
+        const date: Date = this.getDate(gengo);
+        const format: string = this.settings.format;
         return this.convertDateByFormat(date, null, format)
       }
       case 10: {
         // 2018/01/01
         // 2018.01.01
-        const date = this.getDate();
-        let gengo = this.getGengoFromDate(date);
-        const format = this.settings.format;
+        const date: Date = this.getDate();
+        let gengo: Gengo = this.getGengoFromDate(date);
+        const format: string = this.settings.format;
         return this.convertDateByFormat(date, gengo, format)
       }
       default:

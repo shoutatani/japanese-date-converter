@@ -1,4 +1,3 @@
-import jQuery from "jquery";
 import JapaneseDateConverter from "./japanese-date-converter";
 
 (function ($) {
@@ -17,7 +16,7 @@ import JapaneseDateConverter from "./japanese-date-converter";
 
     this.on({
       "change": function (e) {
-        const inputValue = $(this).val() || "";
+        const inputValue = ($(this).val() || "").toString();
         const converter = new JapaneseDateConverter({ inputValue, settings });
         $(this).val(converter.execute());
       }
