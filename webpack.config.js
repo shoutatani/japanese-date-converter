@@ -2,8 +2,8 @@ webpack = require("webpack");
 module.exports = {
   mode: "production",
   entry: {
-    "jquery.japanese-date-converter": "./src/jquery.japanese-date-converter.js",
-    "japanese-date-converter": "./src/japanese-date-converter.ts"
+    "japanese-date-converter": "./src/japanese-date-converter.ts",
+    "jquery.japanese-date-converter": "./src/jquery.japanese-date-converter.js"
   },
   output: {
     path: `${__dirname}/dist`,
