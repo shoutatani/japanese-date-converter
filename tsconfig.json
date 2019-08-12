@@ -1,11 +1,12 @@
 {
   "compilerOptions": {
     "sourceMap": true,
-    "module": "esnext",
-    "target": "es2017",
+    "module": "ESNext",
+    "target": "ES2017",
     "allowJs": true
   },
   "include": [
     "src"
-  ]
+  ],
+  "outFile": ""
 }
