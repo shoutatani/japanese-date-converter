@@ -6,17 +6,15 @@ This module help you to convert Japanese date and Western years.
 
 ## Installation
 
-### for using as a module
+### Using in ESModules
 
-All you need is to call this module, like this.
+All you need is to call this in ESModule, please use like this.
 
 ```
 // file top
-
 import JapaneseDateConverter from "japanese-date-converter";
 
 // in class or function
-
 const inputValue = "R01/05/01";
 const settings = {
   format: "yyyy/mm/dd"
@@ -25,7 +23,24 @@ const converter = new JapaneseDateConverter({ inputValue, settings });
 const convertedValue = converter.execute();
 ```
 
-### for using as jQuery
+### Using in CommonJS
+
+All you need is to call this in CommonJS, please use like this.
+
+```
+// file top
+const JapaneseDateConverter = require('japanese-date-converter').default
+
+// in class or function
+const inputValue = "R01/05/01";
+const settings = {
+  format: "yyyy/mm/dd"
+};
+const converter = new JapaneseDateConverter({ inputValue, settings });
+const convertedValue = converter.execute();
+```
+
+### Using in jQuery
 
 Download script in dist folder, and include the script after the jQuery library (unless you are packaging scripts somehow else):
 
