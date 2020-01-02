@@ -9,6 +9,7 @@ module.exports = {
     path: `${__dirname}/dist`,
     filename: "[name].js",
     library: "JapaneseDateConverter",
+    libraryTarget: 'umd',
   },
   module: {
     rules: [
