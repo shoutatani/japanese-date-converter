@@ -1,0 +1,9 @@
+package.json
+dist/
+docs/
+node_modules/
+
+.babelrc
+.prettierrc.json
+jest.config.js
+tsconfig.json

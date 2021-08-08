@@ -11,6 +11,7 @@ div.sample {
 .supported-styles {
   border: 1px solid black;
 }
-.supported-styles th, .supported-styles td {
+.supported-styles th,
+.supported-styles td {
   border-bottom: 1px solid black;
 }

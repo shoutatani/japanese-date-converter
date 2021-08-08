@@ -3,38 +3,39 @@ module.exports = {
   mode: "production",
   entry: {
     "japanese-date-converter": "./src/japanese-date-converter.ts",
-    "jquery.japanese-date-converter": "./src/jquery.japanese-date-converter.js"
+    "jquery.japanese-date-converter": "./src/jquery.japanese-date-converter.js",
   },
   output: {
     path: `${__dirname}/dist`,
     filename: "[name].js",
     library: "JapaneseDateConverter",
-    libraryTarget: 'umd',
-    globalObject  : 'this',
+    libraryTarget: "umd",
+    globalObject: "this",
   },
   module: {
     rules: [
       {
-        test: /\.(js|jsx|tsx|ts)$/,
+        test: /\.jsx?$/,
         exclude: /node_modules/,
-        loader: "babel-loader"
-      }
-    ]
+        loader: "babel-loader",
+      },
+      { test: /\.tsx?$/, loader: "ts-loader" },
+    ],
   },
   plugins: [
     new webpack.ProvidePlugin({
-      $: 'jquery',
-      jQuery: 'jquery'
-    })
+      $: "jquery",
+      jQuery: "jquery",
+    }),
   ],
   externals: [
     {
       jquery: "jQuery",
       $: "jQuery",
-      jQuery: "jQuery"
-    }
+      jQuery: "jQuery",
+    },
   ],
   resolve: {
-    extensions: ["*", ".js", ".ts"]
-  }
+    extensions: ["*", ".js", ".ts"],
+  },
 };

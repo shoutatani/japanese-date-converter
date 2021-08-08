@@ -3,10 +3,10 @@
     "sourceMap": true,
     "module": "ESNext",
     "target": "ES2017",
-    "allowJs": true
+    "allowJs": true,
+    "esModuleInterop": true,
+    "declaration": true,
+    "outDir": "dist"
   },
-  "include": [
-    "src"
-  ],
-  "outFile": ""
+  "include": ["src"],
 }
