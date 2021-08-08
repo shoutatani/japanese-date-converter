@@ -1,146 +1,162 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>japanese-date-converter sample</title>
+    <meta charset="utf-8" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="./dist/jquery.japanese-date-converter.js"></script>
+    <link type="text/css" rel="stylesheet" href="./styles.css" />
+  </head>
 
-<head>
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>japanese-date-converter sample</title>
-  <meta charset="utf-8">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="./dist/jquery.japanese-date-converter.js"></script>
-  <link type="text/css" rel="stylesheet" href="./styles.css" />
-</head>
-
-<body>
-  <h1>japanese-date-converter Demo (use as jQuery)</h1>
-  <div class="sample">
-    <p>Input "H30/12/31", and then it will be converted into "2018/12/31".</p>
-    <p>This shows that MTSHR styles(明治・大正・昭和・平成・令和) can be converted into Western years style.</p>
-    <input id="1" type="text" placeholder="H30/12/31" />
-  </div>
-  <div class="sample">
-    <p>Input "430/12/31", and then it will be converted into "2018/12/31".</p>
-    <p>This shows that MTSHR styles(明治・大正・昭和・平成・令和) can be inputted as number style, example, M is 1, T is 2, S is 3, H
-      is 4, and R is 5.</p>
-    <input id="2" type="text" placeholder="430/12/31" />
-  </div>
-  <div class="sample">
-    <p>Input "4301231", and then it will be converted into "2018/12/31".</p>
-    <p>This shows that you don't need to input separator literal.</p>
-    <input id="3" type="text" placeholder="4301231" />
-  </div>
-  <div class="sample">
-    <p>Input "430.12.31", and then it will be converted into "2018/12/31".</p>
-    <p>This shows that you can use any separator literal, not only with "/" and ".", but also with any literal</p>
-    <input id="4" type="text" placeholder="430.12.31" />
-  </div>
-  <div class="sample">
-    <p>Input "2019/12/31", and then it will be converted into "R1/12/31".</p>
-    <p>This shows that you can convert into any expression how you'd like to show. supported styles are below.</p>
-    <input id="5" type="text" placeholder="2019/12/31" />
-    <table class="supported-styles">
-      <caption>years</caption>
-      <tr>
-        <th>style</th>
-        <th>example date</th>
-        <th>converted example</th>
-      </tr>
-      <tr>
-        <td>ggg</td>
-        <td>2019/04/30</td>
-        <td>平成</td>
-      </tr>
-      <tr>
-        <td>gg</td>
-        <td>2019/04/30</td>
-        <td>平</td>
-      </tr>
-      <tr>
-        <td>g</td>
-        <td>2019/04/30</td>
-        <td>H</td>
-      </tr>
-      <tr>
-        <td>yyyy</td>
-        <td>2019/04/30</td>
-        <td>2019</td>
-      </tr>
-      <tr>
-        <td>yy</td>
-        <td>2019/04/30</td>
-        <td>19</td>
-      </tr>
-      <tr>
-        <td>ee</td>
-        <td>1990/04/30</td>
-        <td>02</td>
-      </tr>
-      <tr>
-        <td>e</td>
-        <td>1990/04/30</td>
-        <td>2</td>
-      </tr>
-    </table>
-    <table class="supported-styles">
-      <caption>months</caption>
-      <tr>
-        <th>style</th>
-        <th>example date</th>
-        <th>converted example</th>
-      </tr>
-      <tr>
-        <td>mmmmm</td>
-        <td>2019/04/30</td>
-        <td>A</td>
-      </tr>
-      <tr>
-        <td>mmmm</td>
-        <td>2019/04/30</td>
-        <td>April</td>
-      </tr>
-      <tr>
-        <td>mmm</td>
-        <td>2019/04/30</td>
-        <td>Apr</td>
-      </tr>
-      <tr>
-        <td>mm</td>
-        <td>2019/04/30</td>
-        <td>04</td>
-      </tr>
-      <tr>
-        <td>m</td>
-        <td>2019/04/30</td>
-        <td>4</td>
-      </tr>
-    </table>
-    <table class="supported-styles">
-      <caption>days</caption>
-      <tr>
-        <th>style</th>
-        <th>example date</th>
-        <th>converted example</th>
-      </tr>
-      <tr>
-        <td>dd</td>
-        <td>2019/04/02</td>
-        <td>02</td>
-      </tr>
-      <tr>
-        <td>d</td>
-        <td>2019/04/02</td>
-        <td>2</td>
-      </tr>
-    </table>
-  </div>
-  <script>
-    $(document).ready(function () {
-      $("#1").japanese_date_converter({ format: "yyyy/mm/dd" });
-      $("#2").japanese_date_converter({ format: "yyyy/mm/dd" });
-      $("#3").japanese_date_converter({ format: "yyyy/mm/dd" });
-      $("#4").japanese_date_converter({ format: "yyyy/mm/dd" });
-      $("#5").japanese_date_converter({ format: "ge/mm/dd" });
-    });
-  </script>
-</body>
-
+  <body>
+    <h1>japanese-date-converter Demo (use as jQuery)</h1>
+    <div class="sample">
+      <p>Input "H30/12/31", and then it will be converted into "2018/12/31".</p>
+      <p>
+        This shows that MTSHR styles(明治・大正・昭和・平成・令和) can be
+        converted into Western years style.
+      </p>
+      <input id="1" type="text" placeholder="H30/12/31" />
+    </div>
+    <div class="sample">
+      <p>Input "430/12/31", and then it will be converted into "2018/12/31".</p>
+      <p>
+        This shows that MTSHR styles(明治・大正・昭和・平成・令和) can be
+        inputted as number style, example, M is 1, T is 2, S is 3, H is 4, and R
+        is 5.
+      </p>
+      <input id="2" type="text" placeholder="430/12/31" />
+    </div>
+    <div class="sample">
+      <p>Input "4301231", and then it will be converted into "2018/12/31".</p>
+      <p>This shows that you don't need to input separator literal.</p>
+      <input id="3" type="text" placeholder="4301231" />
+    </div>
+    <div class="sample">
+      <p>Input "430.12.31", and then it will be converted into "2018/12/31".</p>
+      <p>
+        This shows that you can use any separator literal, not only with "/" and
+        ".", but also with any literal
+      </p>
+      <input id="4" type="text" placeholder="430.12.31" />
+    </div>
+    <div class="sample">
+      <p>Input "2019/12/31", and then it will be converted into "R1/12/31".</p>
+      <p>
+        This shows that you can convert into any expression how you'd like to
+        show. supported styles are below.
+      </p>
+      <input id="5" type="text" placeholder="2019/12/31" />
+      <table class="supported-styles">
+        <caption>
+          years
+        </caption>
+        <tr>
+          <th>style</th>
+          <th>example date</th>
+          <th>converted example</th>
+        </tr>
+        <tr>
+          <td>ggg</td>
+          <td>2019/04/30</td>
+          <td>平成</td>
+        </tr>
+        <tr>
+          <td>gg</td>
+          <td>2019/04/30</td>
+          <td>平</td>
+        </tr>
+        <tr>
+          <td>g</td>
+          <td>2019/04/30</td>
+          <td>H</td>
+        </tr>
+        <tr>
+          <td>yyyy</td>
+          <td>2019/04/30</td>
+          <td>2019</td>
+        </tr>
+        <tr>
+          <td>yy</td>
+          <td>2019/04/30</td>
+          <td>19</td>
+        </tr>
+        <tr>
+          <td>ee</td>
+          <td>1990/04/30</td>
+          <td>02</td>
+        </tr>
+        <tr>
+          <td>e</td>
+          <td>1990/04/30</td>
+          <td>2</td>
+        </tr>
+      </table>
+      <table class="supported-styles">
+        <caption>
+          months
+        </caption>
+        <tr>
+          <th>style</th>
+          <th>example date</th>
+          <th>converted example</th>
+        </tr>
+        <tr>
+          <td>mmmmm</td>
+          <td>2019/04/30</td>
+          <td>A</td>
+        </tr>
+        <tr>
+          <td>mmmm</td>
+          <td>2019/04/30</td>
+          <td>April</td>
+        </tr>
+        <tr>
+          <td>mmm</td>
+          <td>2019/04/30</td>
+          <td>Apr</td>
+        </tr>
+        <tr>
+          <td>MM</td>
+          <td>2019/04/30</td>
+          <td>04</td>
+        </tr>
+        <tr>
+          <td>M</td>
+          <td>2019/04/30</td>
+          <td>4</td>
+        </tr>
+      </table>
+      <table class="supported-styles">
+        <caption>
+          days
+        </caption>
+        <tr>
+          <th>style</th>
+          <th>example date</th>
+          <th>converted example</th>
+        </tr>
+        <tr>
+          <td>dd</td>
+          <td>2019/04/02</td>
+          <td>02</td>
+        </tr>
+        <tr>
+          <td>d</td>
+          <td>2019/04/02</td>
+          <td>2</td>
+        </tr>
+      </table>
+    </div>
+    <script>
+      $(document).ready(function () {
+        $("#1").japanese_date_converter({ format: "yyyy/MM/dd" });
+        $("#2").japanese_date_converter({ format: "yyyy/MM/dd" });
+        $("#3").japanese_date_converter({ format: "yyyy/MM/dd" });
+        $("#4").japanese_date_converter({ format: "yyyy/MM/dd" });
+        $("#5").japanese_date_converter({ format: "ge/MM/dd" });
+      });
+    </script>
+  </body>
 </html>
