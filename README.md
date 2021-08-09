@@ -1,5 +1,8 @@
 # japanese-date-converter
 
+[![npm version](https://badge.fury.io/js/japanese-date-converter.svg)](https://badge.fury.io/js/japanese-date-converter)
+[![main](https://github.com/shoutatani/japanese-date-converter/actions/workflows/main.yml/badge.svg?branch=master&event=push)](https://github.com/shoutatani/japanese-date-converter/actions/workflows/main.yml)
+
 This module help you to convert Japanese date and Western years.
 
 [Demo Page](https://shoutatani.github.io/japanese-date-converter/)
