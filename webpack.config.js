@@ -1,4 +1,5 @@
 webpack = require("webpack");
+
 module.exports = {
   mode: "production",
   entry: {
@@ -8,8 +9,10 @@ module.exports = {
   output: {
     path: `${__dirname}/dist`,
     filename: "[name].js",
-    library: "JapaneseDateConverter",
-    libraryTarget: "umd",
+    library: {
+      name: "JapaneseDateConverter",
+      type: "umd",
+    },
     globalObject: "this",
   },
   module: {
