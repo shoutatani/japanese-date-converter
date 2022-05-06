@@ -1,7 +1,6 @@
 webpack = require("webpack");
 
 module.exports = {
-  mode: "production",
   entry: {
     "japanese-date-converter": "./src/japanese-date-converter.ts",
     "jquery.japanese-date-converter": "./src/jquery.japanese-date-converter.js",
