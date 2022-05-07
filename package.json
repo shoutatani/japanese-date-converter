@@ -1,6 +1,6 @@
 {
   "name": "japanese-date-converter",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Convert western or japanese years into opposite years.",
   "module": "dist/japanese-date-converter.js",
   "main": "dist/japanese-date-converter.js",
