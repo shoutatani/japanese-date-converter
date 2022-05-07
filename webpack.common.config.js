@@ -40,4 +40,5 @@ module.exports = {
   resolve: {
     extensions: ["*", ".js", ".ts"],
   },
+  target: ["web", "es5"]
 };
