@@ -15,7 +15,7 @@ All you need is to call this in ESModule, please use like this.
 
 ```
 // file top
-import JapaneseDateConverter from "japanese-date-converter";
+import { JapaneseDateConverter } from "japanese-date-converter";
 
 // in class or function
 const inputValue = "R01/05/01";
@@ -32,7 +32,7 @@ All you need is to call this in CommonJS, please use like this.
 
 ```
 // file top
-const JapaneseDateConverter = require('japanese-date-converter').default
+const { JapaneseDateConverter } = require('japanese-date-converter')
 
 // in class or function
 const inputValue = "R01/05/01";

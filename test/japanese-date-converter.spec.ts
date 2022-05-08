@@ -1,4 +1,4 @@
-import JapaneseDateConverter from "../src/japanese-date-converter";
+import { JapaneseDateConverter } from "../src/japanese-date-converter";
 
 let converter: JapaneseDateConverter = null;
 beforeEach(() => {

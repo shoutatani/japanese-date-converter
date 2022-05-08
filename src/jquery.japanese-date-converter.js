@@ -1,4 +1,4 @@
-import JapaneseDateConverter from "./japanese-date-converter";
+import { JapaneseDateConverter } from "./japanese-date-converter";
 
 (function ($) {
   const japanese_date_converter = function (options) {

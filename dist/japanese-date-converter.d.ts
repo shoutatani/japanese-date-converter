@@ -12,7 +12,7 @@ interface Gengo {
     ggg: string;
     gg: string;
 }
-export default class JapaneseDateConverter {
+export declare class JapaneseDateConverter {
     inputValue: string;
     settings: {
         format: string;

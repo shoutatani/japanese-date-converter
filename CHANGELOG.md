@@ -1,9 +1,31 @@
 # CHANGELOG
 
 ## Features
+
 ## Fixes
+
 ## Chore & Maintenance
+
 ## Performance
+
+# v2.0.0 (2022-05-08)
+
+## Fixes
+
+- [BREAKING] Stopped default export
+
+## Chore & Maintenance
+
+- Upgraded dependency packages
+
+  - ts-jest
+  - jest
+  - ts-loader
+  - typescript
+
+- Introduced `lint` script for execute format by prettier
+
+- Added tests to ensure that output can be used from CommonJS & ES Modules
 
 # v1.0.3 (2022-05-06)
 
