@@ -9,49 +9,48 @@ This module help you to convert Japanese date and Western years.
 
 ## Installation
 
-### Using in ESModules
-
-All you need is to call this in ESModule, please use like this.
-
-```
-// file top
-import { JapaneseDateConverter } from "japanese-date-converter";
-
-// in class or function
-const inputValue = "R01/05/01";
-const settings = {
-  format: "yyyy/MM/dd"
-};
-const converter = new JapaneseDateConverter({ inputValue, settings });
-const convertedValue = converter.execute();
-```
-
 ### Using in CommonJS
 
-All you need is to call this in CommonJS, please use like this.
+In CommonJS, please use like this.
 
 ```
-// file top
 const { JapaneseDateConverter } = require('japanese-date-converter')
 
-// in class or function
 const inputValue = "R01/05/01";
 const settings = {
   format: "yyyy/MM/dd"
 };
 const converter = new JapaneseDateConverter({ inputValue, settings });
 const convertedValue = converter.execute();
+console.log(convertedValue); // "2019/05/01"
+```
+
+### Using in ES Modules
+
+In ES Modules, please use like this.
+
+```
+import { JapaneseDateConverter } from "japanese-date-converter";
+
+const inputValue = "R01/05/01";
+const settings = {
+  format: "yyyy/MM/dd"
+};
+const converter = new JapaneseDateConverter({ inputValue, settings });
+const convertedValue = converter.execute();
+console.log(convertedValue); // "2019/05/01"
 ```
 
 ### Using in jQuery
 
-Download script in dist folder, and include the script after the jQuery library (unless you are packaging scripts somehow else):
+Download script in dist folder, and include the script after loading your jQuery library.
 
 ```
 <script src="../dist/jquery.japanese-date-converter.js"></script>
 ```
 
-And, call like this.
+And, call like this.  
+In this library, library catch `change` event, so inputted text will be formatted automatically after text entering.
 
 ```
 <script>
@@ -63,13 +62,16 @@ And, call like this.
 
 ## Details
 
-1. When text inputted, the text will be converted as format.
+1. When text inputted, the text will be parsed internally in this library.
+
+2. After parsed internally in this library, parsed date(time) will be formatted as given format.
 
 - example
-  - When format is "gee/MM/dd", "2019/04/30" will be "H31/04/30".
+  - When format is "gee/MM/dd", "2019/04/30" will be formatted as "H31/04/30".
+  - When format is "ggge年M月d日", "2019/04/05" will be formatted as "平成31年4月5日".
 - If you'd like to know more, please check [Demo Page](https://shoutatani.github.io/japanese-date-converter/).
 
-2. Supported format is as below.
+3. Supported format is as below.
 <table class="supported-styles">
     <caption>years</caption>
     <tr>
@@ -167,7 +169,15 @@ And, call like this.
 
 ## Contributing
 
-In preparation.
+1. fork this repository.
+2. run `yarn install`
+3. fix or add new feature.
+4. after fix or add new feature, run these command.
+  - `yarn lint`
+  - `yarn test`
+  - `yarn build`
+5. if any warn or error occurred, fix your code and run above commands again.
+6. commit your changes, and create Pull Request in GitHub.
 
 ## Authors
 
